@@ -16,3 +16,18 @@ label {
   color: white;
   margin: auto 0.3rem;
 }
+
+.not-found, .error, .loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found {
+  height: 100vh;
+}
+
+.error, .loading {
+  height: calc(100vh - 2.5rem);
+}

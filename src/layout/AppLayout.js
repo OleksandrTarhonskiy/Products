@@ -12,6 +12,8 @@ import { DelayInput } from 'react-delay-input';
 import { getSizes } from 'store/Sizes/actions';
 import { getColors } from 'store/Colors/actions';
 import { getCategories } from 'store/Categories/actions';
+import Loading from './Loading';
+import Error from './Error';
 
 const AppLayout = ({ children, location, loading, error }) => {
   const history = useHistory();
@@ -35,7 +37,7 @@ const AppLayout = ({ children, location, loading, error }) => {
     });
    };
   
-  if (error) return <div>{error}</div>;
+  if (error) return <Error error={error} />;
 
   return (
     <>
@@ -59,7 +61,7 @@ const AppLayout = ({ children, location, loading, error }) => {
               onChange={({ target }) => handleFilter({ sizes: target.value })}
               value={params.sizes}
             >
-              <option value=''>None</option>
+              <option value=''>All</option>
               {
                 sizes.length && sizes.map((s) => 
                   <option key={s.id} value={s.id}>{s.name}</option>
@@ -73,7 +75,7 @@ const AppLayout = ({ children, location, loading, error }) => {
               onChange={({ target }) => handleFilter({ colors: target.value })}
               value={params.colors}
             >
-              <option value=''>None</option>
+              <option value=''>All</option>
               {
                 colors.length && colors.map((c) => 
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -87,7 +89,7 @@ const AppLayout = ({ children, location, loading, error }) => {
               onChange={({ target }) => handleFilter({ categories: target.value })}
               value={params.categories}
             >
-              <option value=''>None</option>
+              <option value=''>All</option>
               {
                 categories.length && categories.map((catg) => 
                   <option key={catg.id} value={catg.id}>{catg.name}</option>
@@ -98,7 +100,7 @@ const AppLayout = ({ children, location, loading, error }) => {
         </Container>
       </Navbar>
       <Container>
-        {loading ? <div>Loading...</div> : children}
+        {loading ? <Loading /> : children}
       </Container>
     </>
   );

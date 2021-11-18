@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import qs from 'qs';
-import { Card, Badge } from 'react-bootstrap';
 
 import { getProducts } from 'store/Products/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import PaginationPanel from 'components/PaginationPanel';
 import AppLayout from 'layout/AppLayout';
+import Product from 'components/Product';
 
 const Products = ({ location }) => {
   const dispatch = useDispatch();
@@ -38,24 +38,13 @@ const Products = ({ location }) => {
     <AppLayout location={location} loading={loading} error={error}>
       <div className="products">
       {
-        data?.results?.map((p) => 
-          <Card key={p.id} className="products__item">
-            <Card.Img variant="top" src={p.image} alt="product-img" />
-            <Card.Body>
-              <Card.Title>{p.name}</Card.Title>
-              <Card.Text>{p.sku}</Card.Text>
-              <div className="d-flex">
-                <Card.Text className="me-1">Sizes:</Card.Text>
-                  {
-                    p.sizes.map((s) =>
-                      <Card.Text key={s.id} className="me-1">{s.name}</Card.Text>
-                    )
-                  }{' '}
-              </div>
-              <Badge bg="success">{`${p.price} $`}</Badge>
-            </Card.Body>
-          </Card>
+        data.results.length ? data.results.map((p) => 
+          <Product key={p.id} product={p} />
         )
+        : 
+        <div className="d-flex justify-content-center">
+          <p>Nothing to show...</p>
+        </div>
       }
       </div>
       <PaginationPanel 

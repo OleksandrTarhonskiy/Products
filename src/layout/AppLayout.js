@@ -57,6 +57,7 @@ const AppLayout = ({ children, location, loading, error }) => {
             </Form.Label>
             <Form.Select
               onChange={({ target }) => handleFilter({ sizes: target.value })}
+              value={params.sizes}
             >
               <option value=''>None</option>
               {
@@ -70,6 +71,7 @@ const AppLayout = ({ children, location, loading, error }) => {
             </Form.Label>
             <Form.Select
               onChange={({ target }) => handleFilter({ colors: target.value })}
+              value={params.colors}
             >
               <option value=''>None</option>
               {
@@ -83,6 +85,7 @@ const AppLayout = ({ children, location, loading, error }) => {
             </Form.Label>
             <Form.Select
               onChange={({ target }) => handleFilter({ categories: target.value })}
+              value={params.categories}
             >
               <option value=''>None</option>
               {

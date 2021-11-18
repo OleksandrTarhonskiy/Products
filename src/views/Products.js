@@ -38,7 +38,7 @@ const Products = ({ location }) => {
     <AppLayout location={location} loading={loading} error={error}>
       <div className="products">
       {
-        data.results.length ? data.results.map((p) => 
+        data.results?.length ? data.results.map((p) => 
           <Product key={p.id} product={p} />
         )
         : 

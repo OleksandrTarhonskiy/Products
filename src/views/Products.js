@@ -6,7 +6,7 @@ import { getProducts } from 'store/Products/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import PaginationPanel from 'components/PaginationPanel';
 import AppLayout from 'layout/AppLayout';
-import Product from 'components/Product';
+import Product from './Product';
 
 const Products = ({ location }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,10 @@ const Products = ({ location }) => {
       <div className="products">
       {
         data.results?.length ? data.results.map((p) => 
-          <Product key={p.id} product={p} />
+          <Product 
+            key={p.id} 
+            product={p} 
+          />
         )
         : 
         <div className="d-flex justify-content-center">

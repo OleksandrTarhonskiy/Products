@@ -1,1 +1,0 @@
-export const GET_COLORS = 'GET_COLORS';

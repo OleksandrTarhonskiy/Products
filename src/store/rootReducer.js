@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux';
 
 import products from './Products/reducers';
-import sizes from './Sizes/reducers';
-import colors from './Colors/reducers';
-import categories from './Categories/reducers';
+import filters from './filters/reducers';
 
 export default combineReducers({
   products,
-  sizes,
-  colors,
-  categories,
+  filters,
 });
